@@ -118,7 +118,10 @@ extension FlightListViewController: UICollectionViewDataSource {
 }
 
 extension FlightListViewController: UICollectionViewDelegate {
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedFlight = flights[indexPath.item]
+        let detailViewController = FlightDetailViewController(flight: selectedFlight)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 

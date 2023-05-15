@@ -13,6 +13,7 @@
 		55DAE9D82A12113000D366F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DAE9D72A12113000D366F9 /* Assets.xcassets */; };
 		55DAE9DB2A12113000D366F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DAE9D92A12113000D366F9 /* LaunchScreen.storyboard */; };
 		55DAE9E32A1212E000D366F9 /* FlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DAE9E22A1212E000D366F9 /* FlightCell.swift */; };
+		55DAE9E52A12141C00D366F9 /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DAE9E42A12141C00D366F9 /* FlightDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		55DAE9DA2A12113000D366F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55DAE9DC2A12113000D366F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55DAE9E22A1212E000D366F9 /* FlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightCell.swift; sourceTree = "<group>"; };
+		55DAE9E42A12141C00D366F9 /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				55DAE9CE2A12112900D366F9 /* AppDelegate.swift */,
 				55DAE9D02A12112900D366F9 /* SceneDelegate.swift */,
 				55DAE9D22A12112900D366F9 /* FlightListViewController.swift */,
+				55DAE9E42A12141C00D366F9 /* FlightDetailViewController.swift */,
 				55DAE9D72A12113000D366F9 /* Assets.xcassets */,
 				55DAE9D92A12113000D366F9 /* LaunchScreen.storyboard */,
 				55DAE9DC2A12113000D366F9 /* Info.plist */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DAE9E52A12141C00D366F9 /* FlightDetailViewController.swift in Sources */,
 				55DAE9D32A12112900D366F9 /* FlightListViewController.swift in Sources */,
 				55DAE9E32A1212E000D366F9 /* FlightCell.swift in Sources */,
 				55DAE9CF2A12112900D366F9 /* AppDelegate.swift in Sources */,
