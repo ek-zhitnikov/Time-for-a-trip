@@ -7,38 +7,6 @@
 
 import UIKit
 
-extension UserDefaults {
-    func saveLikeState(_ isLiked: Bool, for searchToken: String) {
-        set(isLiked, forKey: searchToken)
-    }
-    
-    func getLikeState(for searchToken: String) -> Bool {
-        return bool(forKey: searchToken)
-    }
-}
-
-struct FlightResponse: Decodable {
-    let flights: [Flight]
-}
-
-struct Flight: Decodable {
-    let startDate: String
-    let endDate: String
-    let startLocationCode: String
-    let endLocationCode: String
-    let startCity: String
-    let endCity: String
-    let serviceClass: String
-    let seats: [Seat]
-    let price: Int
-    let searchToken: String
-}
-
-struct Seat: Decodable {
-    let passengerType: String
-    let count: Int
-}
-
 class FlightListViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var activityIndicator: UIActivityIndicatorView!
@@ -50,8 +18,9 @@ class FlightListViewController: UIViewController {
         
         setupCollectionView()
         setupActivityIndicator()
+        
         fetchFlights()
-//        loadTestData()
+//        loadTestData() метод для проверки без доступа к сети
     }
     
     override func viewWillAppear(_ animated: Bool) {
