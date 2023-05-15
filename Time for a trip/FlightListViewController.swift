@@ -40,8 +40,8 @@ class FlightListViewController: UIViewController {
         
         setupCollectionView()
         setupActivityIndicator()
-        
-        loadTestData()
+        fetchFlights()
+//        loadTestData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +73,24 @@ class FlightListViewController: UIViewController {
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.center = view.center
         view.addSubview(activityIndicator)
+    }
+    
+    private func fetchFlights() {
+        activityIndicator.startAnimating()
+
+        NetworkService.fetchFlights { [weak self] result in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+
+                switch result {
+                case .success(let response):
+                    self?.flights = response.flights
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
 
