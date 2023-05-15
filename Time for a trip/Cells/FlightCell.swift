@@ -60,7 +60,9 @@ class FlightCell: UICollectionViewCell {
     private lazy var likeButton: UIButton = {
         let view = UIButton()
         view.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        view.setImage(UIImage(systemName: "heart"), for: .normal)
+        let heartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+        view.setImage(heartImage, for: .normal)
+        view.tintColor = UIColor(named: "WB color light")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

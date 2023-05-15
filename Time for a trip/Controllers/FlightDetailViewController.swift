@@ -22,14 +22,16 @@ class FlightDetailViewController: UIViewController {
     private lazy var likeButton: UIButton = {
         let view = UIButton()
         view.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        view.setImage(UIImage(systemName: "heart"), for: .normal)
+        let heartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+        view.setImage(heartImage, for: .normal)
+        view.tintColor = UIColor(named: "WB color light")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var priceLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.boldSystemFont(ofSize: 26)
+        view.font = UIFont.boldSystemFont(ofSize: 28)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -73,6 +75,15 @@ class FlightDetailViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private lazy var logoImageView: UIImageView = {
+        let view = UIImageView()
+        let logoImage = UIImage(named: "WB logo")
+        view.image = logoImage
+        view.contentMode = .scaleAspectFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     convenience init(flight: Flight) {
         self.init()
@@ -81,8 +92,11 @@ class FlightDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "WB color dark")
+        if let navigationController = navigationController {
+            navigationController.navigationBar.tintColor = .white
+        }
 
-        view.backgroundColor = .yellow
         setupBackgroundView()
         setupSubViews()
         configureFlightDetails()
@@ -96,13 +110,11 @@ class FlightDetailViewController: UIViewController {
             backgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
             backgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5),
             backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 5),
-
         ])
     }
 
     
     private func setupBackgroundView() {
-        
         view.addSubview(backgroundView)
         
         NSLayoutConstraint.activate([
@@ -110,7 +122,6 @@ class FlightDetailViewController: UIViewController {
             backgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             backgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-
         ])
     }
     
@@ -121,10 +132,9 @@ class FlightDetailViewController: UIViewController {
         backgroundView.addSubview(departureDateLabel)
         backgroundView.addSubview(returnLabel)
         backgroundView.addSubview(returnDateLabel)
+        backgroundView.addSubview(logoImageView)
 
         NSLayoutConstraint.activate([
-
-
             priceLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             priceLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 30),
             
@@ -150,6 +160,11 @@ class FlightDetailViewController: UIViewController {
             returnDateLabel.topAnchor.constraint(equalTo: returnLabel.bottomAnchor, constant: 5),
             returnDateLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -20),
             returnDateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20),
+            
+            logoImageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            logoImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -50),
+            logoImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -20),
+            logoImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20),
         ])
     }
     

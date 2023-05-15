@@ -15,6 +15,9 @@ class FlightListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let navigationController = navigationController {
+            navigationController.navigationBar.barTintColor = UIColor(named: "WB color dark")
+        }
         
         setupCollectionView()
         setupActivityIndicator()
@@ -30,9 +33,7 @@ class FlightListViewController: UIViewController {
     
     private func loadTestData() {
         let testData = createTestData()
-
         flights = testData
-
         collectionView.reloadData()
     }
     
@@ -44,13 +45,14 @@ class FlightListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(FlightCell.self, forCellWithReuseIdentifier: "FlightCell")
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = UIColor(named: "WB color dark")
         view.addSubview(collectionView)
     }
     
     private func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.center = view.center
+        activityIndicator.color = .white
         view.addSubview(activityIndicator)
     }
     
@@ -72,7 +74,6 @@ class FlightListViewController: UIViewController {
         }
     }
     
-
     private func createTestData() -> [Flight] {
         let flight1 = Flight(startDate: "2023-05-18 00:00:00 +0000 UTC",
                              endDate: "2023-05-20 00:00:00 +0000 UTC",
