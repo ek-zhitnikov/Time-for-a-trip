@@ -61,7 +61,6 @@ class FlightCell: UICollectionViewCell {
         let view = UIButton()
         view.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         view.setImage(UIImage(systemName: "heart"), for: .normal)
-
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -70,14 +69,14 @@ class FlightCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .white
         layer.cornerRadius = 20
-        setupUI()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI() {
+    private func setupViews() {
         addSubview(priceLabel)
         addSubview(departureLabel)
         addSubview(departureDateLabel1)
@@ -96,11 +95,13 @@ class FlightCell: UICollectionViewCell {
             
             departureDateLabel1.topAnchor.constraint(equalTo: departureLabel.bottomAnchor, constant: 15),
             departureDateLabel1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
             departureDateLabel2.topAnchor.constraint(equalTo: departureLabel.bottomAnchor, constant: 15),
             departureDateLabel2.leadingAnchor.constraint(equalTo: departureDateLabel1.trailingAnchor, constant: 5),
             
             returnDateLabel1.topAnchor.constraint(equalTo: departureDateLabel1.bottomAnchor, constant: 5),
             returnDateLabel1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
             returnDateLabel2.topAnchor.constraint(equalTo: departureDateLabel1.bottomAnchor, constant: 5),
             returnDateLabel2.leadingAnchor.constraint(equalTo: returnDateLabel1.trailingAnchor, constant: 5),
             
@@ -121,7 +122,6 @@ class FlightCell: UICollectionViewCell {
         self.flight = flight
         
         departureLabel.text = "\(flight.startCity) ➔ \(flight.endCity)"
-//        arrivalLabel2.text = "\(flight.endCity)"
         departureDateLabel2.text = "\(convertDateFormat(flight.startDate) ?? "Uncorrect Date")"
         returnDateLabel2.text = "\(convertDateFormat(flight.endDate) ?? "Uncorrect Date")"
         priceLabel.text = "\(flight.price) ₽"
@@ -129,7 +129,7 @@ class FlightCell: UICollectionViewCell {
         updateLikeButtonState()
     }
     
-    func convertDateFormat(_ inputDateString: String) -> String? {
+    private func convertDateFormat(_ inputDateString: String) -> String? {
         let inputDateFormatter = DateFormatter()
         inputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ 'UTC'"
 
