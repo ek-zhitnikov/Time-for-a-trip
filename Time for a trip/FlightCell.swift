@@ -56,6 +56,8 @@ class FlightCell: UICollectionViewCell {
         isLiked.toggle()
         let imageName = isLiked ? "heart.fill" : "heart"
         likeButton.setImage(UIImage(systemName: imageName), for: .normal)
+        
+        UserDefaults.standard.saveLikeState(isLiked, for: flight.searchToken)
     }
     
     func configure(with flight: Flight) {
@@ -66,5 +68,14 @@ class FlightCell: UICollectionViewCell {
         departureDateLabel.text = "Departure: \(flight.startDate)"
         returnDateLabel.text = "Return: \(flight.endDate)"
         priceLabel.text = "Price: \(flight.price) rubles"
+        
+        updateLikeButtonState()
+    }
+    
+    private func updateLikeButtonState() {
+        let isLiked = UserDefaults.standard.getLikeState(for: flight.searchToken)
+        self.isLiked = isLiked
+        let imageName = isLiked ? "heart.fill" : "heart"
+        likeButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
 }

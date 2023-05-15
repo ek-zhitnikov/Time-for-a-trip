@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension UserDefaults {
+    func saveLikeState(_ isLiked: Bool, for searchToken: String) {
+        set(isLiked, forKey: searchToken)
+    }
+    
+    func getLikeState(for searchToken: String) -> Bool {
+        return bool(forKey: searchToken)
+    }
+}
+
 struct FlightResponse: Decodable {
     let flights: [Flight]
 }

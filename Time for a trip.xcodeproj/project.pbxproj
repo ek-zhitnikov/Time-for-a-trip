@@ -63,11 +63,11 @@
 				55DAE9CE2A12112900D366F9 /* AppDelegate.swift */,
 				55DAE9D02A12112900D366F9 /* SceneDelegate.swift */,
 				55DAE9D22A12112900D366F9 /* FlightListViewController.swift */,
+				55DAE9E22A1212E000D366F9 /* FlightCell.swift */,
 				55DAE9E42A12141C00D366F9 /* FlightDetailViewController.swift */,
 				55DAE9D72A12113000D366F9 /* Assets.xcassets */,
 				55DAE9D92A12113000D366F9 /* LaunchScreen.storyboard */,
 				55DAE9DC2A12113000D366F9 /* Info.plist */,
-				55DAE9E22A1212E000D366F9 /* FlightCell.swift */,
 				55DAE9E62A12168300D366F9 /* NetworkService.swift */,
 			);
 			path = "Time for a trip";
