@@ -23,7 +23,7 @@ class FlightListViewController: UIViewController {
         setupActivityIndicator()
         
         fetchFlights()
-//        loadTestData() метод для проверки без доступа к сети
+//        loadTestData() /*метод для проверки без доступа к сети*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,9 +32,16 @@ class FlightListViewController: UIViewController {
     }
     
     private func loadTestData() {
-        let testData = createTestData()
-        flights = testData
-        collectionView.reloadData()
+        activityIndicator.startAnimating()
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            sleep(3)
+            let testData = self.createTestData()
+            self.flights = testData
+            self.collectionView.reloadData()
+        }
+
     }
     
     private func setupCollectionView() {
@@ -60,7 +67,7 @@ class FlightListViewController: UIViewController {
         activityIndicator.startAnimating()
 
         NetworkService.fetchFlights { [weak self] result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 self?.activityIndicator.stopAnimating()
 
                 switch result {
